@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 
-class MyMessage extends Component {
-
-    render() {
+const MyMessage = ({ message })=>{
+        if(message.attachments.length > 0){
+            return (
+                <img
+                    src = {message.attachments[0].file}
+                    alt = "message-attachment"
+                    className = "message-image"
+                    style = {{ float: 'right' }}
+                />
+            )
+        }
         return (
-            <div>
-                My Message
+            <div className = "message" style = {{float: 'right', marginRight:'18px', color:'white', backgroundColor:"#3A4567"}}>
+                {message.text}
             </div>
         );
-    }
 }
 
 export default MyMessage;
